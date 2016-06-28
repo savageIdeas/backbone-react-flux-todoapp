@@ -4,7 +4,7 @@ var TodoDispatcher = require('../dispatcher/TodoDispatcher');
 TodoItem = Backbone.Model.extend({
   defaults: {
     todo: "ToDo",
-    done: true
+    done: false
   }
 });
 

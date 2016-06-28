@@ -76,7 +76,7 @@ gulp.task('run-tests', ['bundle-tests'], function() {
 // COMPILE (JSX->JS and LESS->CSS) [Move from src->Build]
 // -----------------------------------------------------------
 
-gulp.task('compile',['compile-js','compile-less','compile-sass','compile-html','compile-css']);
+gulp.task('compile',['compile-js','compile-less','compile-sass','compile-html','compile-css', 'compile-images']);
 
 // Convert JSX files to JS
 gulp.task('compile-js', function() {
@@ -112,12 +112,18 @@ gulp.task('compile-html', function() {
     .pipe(gulp.dest('build'));
 });
 
+// Move images files into build
+gulp.task('compile-images', function() {
+    gulp.src('src/images/**/*.png')
+    .pipe(gulp.dest('build/images'));
+});
+
 // -----------------------------------------------------------
 // BUILD: Build->Public
 // -----------------------------------------------------------
 
 gulp.task('build', function() {
-	runSequence(['browserify','copy-html','copy-css'],['minify','uglify']);
+	runSequence(['browserify','copy-html','copy-css','copy-images'],['minify','uglify']);
 });
 
 // Browserify (Bundles the JS into a single file) and moves JS into public
@@ -140,6 +146,12 @@ gulp.task('copy-html', function() {
 gulp.task('copy-css', function() {
     gulp.src('build/css/**/*.css')
     .pipe(gulp.dest('public/stylesheets'));
+});
+
+// Move images files
+gulp.task('copy-images', function() {
+    gulp.src('build/images/**/*.png')
+    .pipe(gulp.dest('public/images'));
 });
 
 // Minify CSS

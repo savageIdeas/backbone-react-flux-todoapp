@@ -1,7 +1,7 @@
 # backbone-react-flux-todoapp
-A basic Todo list application using Backbone, React and a flux design pattern
+A basic todo list application using Backbone, React and the Flux design pattern
 
-You need to download the repo. Then to install run:
+You need to download the repo. Then install:
 
   - npm install
 
@@ -17,3 +17,5 @@ Running gulp will do the following:
   - Run the tests
   - Compile the code (compiles JSX, LESS/SASS and moves to the build folder)
   - Builds the code (bundles, minifies, uglyfies and moves to public)
+
+Then you can open the index.html generated in the public folder.
